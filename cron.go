@@ -41,6 +41,9 @@ type Schedule interface {
 	// Next returns the next activation time, later than the given time.
 	// Next is invoked initially, and then each time the job is run.
 	Next(time.Time) time.Time
+
+	// Prev returns the previous activation time, earlier than the given time.
+	Prev(time.Time) time.Time
 }
 
 // EntryID identifies an entry within a Cron instance
@@ -133,6 +136,7 @@ func New(opts ...Option) *Cron {
 // FuncJob is a wrapper that turns a func() into a cron.Job
 type FuncJob func()
 
+// Run will satisfies interface declaration
 func (f FuncJob) Run() { f() }
 
 // AddFunc adds a func to the Cron to be run on the given schedule.
