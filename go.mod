@@ -1,3 +1,3 @@
-module github.com/clarkmcc/cron
+module github.com/clarkmcc/cron/v3
 
 go 1.12
